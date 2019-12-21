@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script>
+            window.onload = function() {
+                ajaxCall("/jrello/service", "", login_success);
+            }
+        </script>
+    </head>
+    <body>
+        Index page...  
+        <div>
+            <h3>user list</h3>
+            <button onclick="ajaxCall('/jrello/service', 'test', show_members_data)">show all users</button>
+        </div>
+        <div>
+            <h3>find user</h3>
+            <form id="searchForm">
+                <input type="hidden" name="cmd" value="searchMember">
+                <input name="id" type="text" placeholder="id"> <input type="button" onclick="ajaxCall('/jrello/service', 'searchForm', show_members_data)" value="search">
+            </form>
+        </div>
+        <div>
+            <h3>user add</h3>
+            <form id="addForm">
+                <input type="hidden" name="cmd" value="addMember">
+                <input name="id" type="text" placeholder="id">
+                <input name="password" type="password" placeholder="password">
+                <input name="name" type="text" placeholder="name">
+                <input type="button" onclick="ajaxCall('/jrello/service', 'addForm', login_success)" value="add">
+            </form>
+        </div>
+        <div>
+            <h3>login test</h3>
+            <form id="loginForm">
+                <input type="hidden" name="cmd" value="login">
+                <input name="id" type="text" placeholder="id">
+                <input name="password" type="password" placeholder="password">
+                <input type="button" onclick="ajaxCall('/jrello/service', 'loginForm', login_success)" value="login">
+            </form>
+        </div>
+        <div id="output"></div>
+
+        <script src="js/util.js"></script>
+    </body>
+</html>
